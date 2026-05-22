@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hệ thống Quản lý Chuỗi Điểm bán | Huong Cao Nguyen</title>
+
+    <!-- Reveal.js Core (CHỈ load reveal.css, KHÔNG load theme để tránh conflict) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom theme (load SAU reveal.css để override) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ====================== SLIDE 1: TITLE ====================== -->
+            <section class="title-slide" data-background-color="#0a2540">
+                <div class="title-overlay"></div>
+                <div class="title-content">
+                    <div class="company-badge">
+                        <i class="fas fa-store"></i>
+                        <span>HUONG CAO NGUYEN ERP</span>
+                    </div>
+                    <h1 class="main-title">HỆ THỐNG QUẢN LÝ<br><span class="highlight">CHUỖI ĐIỂM BÁN</span></h1>
+                    <p class="subtitle">Giải pháp số hóa vận hành chuỗi cửa hàng & điểm bán di động</p>
+                    <div class="title-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Tổng quan giải pháp 2026</span>
+                        </div>
+                        <div class="meta-divider"></div>
+                        <div class="meta-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Module: store_management</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-footer">
+                    <span>Nhấn <kbd>→</kbd> hoặc <kbd>Space</kbd> để bắt đầu</span>
+                </div>
+            </section>
+
+            <!-- ====================== SLIDE 2: AGENDA ====================== -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">00</span>
+                    <h2>Nội dung trình bày</h2>
+                </div>
+                <div class="agenda-grid">
+                    <div class="agenda-item">
+                        <span class="agenda-num">01</span>
+                        <div>
+                            <h3>Bối cảnh & Thực trạng</h3>
+                            <p>Câu chuyện vận hành hiện tại</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-num">02</span>
+                        <div>
+                            <h3>Khó khăn hiện hữu</h3>
+                            <p>Pain points cần giải quyết</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-num">03</span>
+                        <div>
+                            <h3>Giải pháp đề xuất</h3>
+                            <p>Odoo ERP + Mobile App</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-num">04</span>
+                        <div>
+                            <h3>Cấu trúc hệ thống</h3>
+                            <p>3 nhóm người dùng chính</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-num">05</span>
+                        <div>
+                            <h3>Giá trị mang lại</h3>
+                            <p>Lợi ích đo lường được</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item highlight-agenda">
+                        <span class="agenda-num"><i class="fas fa-rocket"></i></span>
+                        <div>
+                            <h3>Hướng phát triển</h3>
+                            <p>Mở rộng & tối ưu</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====================== SECTION 1: BỐI CẢNH ====================== -->
+            <section data-background-color="#0a2540" class="divider-slide">
+                <div class="divider-content">
+                    <span class="divider-number">01</span>
+                    <h2 class="divider-title">Bối cảnh<br><span class="highlight">& Câu chuyện vận hành</span></h2>
+                    <p class="divider-sub">Hiểu rõ thực trạng — Định hình bài toán</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2>Câu chuyện kinh doanh</h2>
+                </div>
+                <div class="story-container">
+                    <div class="story-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="story-text">
+                        <p class="story-lead">
+                            Doanh nghiệp đang vận hành <span class="number-highlight">nhiều điểm bán</span>
+                            trải dài trên nhiều tuyến đường và khu vực.
+                        </p>
+                        <p class="story-detail">
+                            Toàn bộ hoạt động quản lý nhân viên, doanh thu và nguyên vật liệu
+                            <strong>vẫn đang thực hiện thủ công</strong> — phụ thuộc hoàn toàn vào group chat
+                            (Zalo, Messenger) và Excel.
+                        </p>
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-store-alt"></i>
+                                <div>
+                                    <span class="stat-label">Mô hình</span>
+                                    <span class="stat-value">Chuỗi điểm bán di động</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <span class="stat-label">Vận hành</span>
+                                    <span class="stat-value">100% thủ công</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-comment-dots"></i>
+                                <div>
+                                    <span class="stat-label">Công cụ chính</span>
+                                    <span class="stat-value">Group chat + Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ QUY TRÌNH HIỆN TẠI - NHÂN VIÊN ============ -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2>Quy trình hiện tại — <span class="text-primary">Nhân viên bán hàng</span></h2>
+                </div>
+                <div class="workflow-timeline">
+                    <div class="timeline-step">
+                        <div class="step-icon"><i class="fas fa-walking"></i></div>
+                        <div class="step-content">
+                            <h4>Di chuyển đến điểm bán</h4>
+                            <p>Tự đi đến điểm bán được phân công mỗi ngày</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step warning">
+                        <div class="step-icon"><i class="fas fa-clock"></i></div>
+                        <div class="step-content">
+                            <h4>Chưa có hệ thống chấm công</h4>
+                            <p>Không ghi nhận giờ vào ca, giờ nghỉ, giờ kết thúc</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step warning">
+                        <div class="step-icon"><i class="fas fa-pencil-alt"></i></div>
+                        <div class="step-content">
+                            <h4>Báo cáo doanh thu thủ công</h4>
+                            <p>Tự ghi chép → tổng hợp số liệu → chụp hình → gửi group chat</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step warning">
+                        <div class="step-icon"><i class="fas fa-boxes"></i></div>
+                        <div class="step-content">
+                            <h4>Yêu cầu NVL bằng tin nhắn</h4>
+                            <p>Khi thiếu nguyên vật liệu → tự kiểm kê → nhắn tin lên group</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ QUY TRÌNH HIỆN TẠI - QUẢN LÝ ============ -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2>Quy trình hiện tại — <span class="text-primary">Quản lý</span></h2>
+                </div>
+                <div class="manager-grid">
+                    <div class="manager-card">
+                        <div class="manager-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>Theo dõi doanh thu</h4>
+                        <p>Đọc tin nhắn báo cáo từ từng điểm bán</p>
+                    </div>
+                    <div class="manager-card">
+                        <div class="manager-icon"><i class="fas fa-search"></i></div>
+                        <h4>Kiểm tra báo cáo</h4>
+                        <p>Rà soát điểm bán nào chưa gửi báo cáo</p>
+                    </div>
+                    <div class="manager-card">
+                        <div class="manager-icon"><i class="fas fa-bell"></i></div>
+                        <h4>Nhắc nhở nhân viên</h4>
+                        <p>Gọi điện / nhắn tin từng nhân viên</p>
+                    </div>
+                    <div class="manager-card">
+                        <div class="manager-icon"><i class="fas fa-file-excel"></i></div>
+                        <h4>Nhập liệu Excel</h4>
+                        <p>Tổng hợp dữ liệu thủ công vào file Excel</p>
+                    </div>
+                    <div class="manager-card">
+                        <div class="manager-icon"><i class="fas fa-truck"></i></div>
+                        <h4>Cấp phát NVL</h4>
+                        <p>Theo dõi yêu cầu từ group chat</p>
+                    </div>
+                    <div class="manager-card">
+                        <div class="manager-icon"><i class="fas fa-warehouse"></i></div>
+                        <h4>Kiểm kê tồn kho</h4>
+                        <p>Đếm thủ công, ghi sổ thủ công</p>
+                    </div>
+                </div>
+                <div class="bottom-callout">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Toàn bộ quy trình vận hành <strong>phụ thuộc vào group chat</strong> — không có hệ thống chuẩn hóa</span>
+                </div>
+            </section>
+
+            <!-- ====================== SECTION 2: KHÓ KHĂN ====================== -->
+            <section data-background-color="#7c2d12" class="divider-slide">
+                <div class="divider-content">
+                    <span class="divider-number">02</span>
+                    <h2 class="divider-title">Khó khăn<br><span class="highlight-warm">hiện tại</span></h2>
+                    <p class="divider-sub">Pain points cản trở sự phát triển</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2>Khó khăn — Cả 2 phía đều bị ảnh hưởng</h2>
+                </div>
+                <div class="pain-points">
+                    <div class="pain-column">
+                        <div class="pain-header">
+                            <i class="fas fa-user"></i>
+                            <h3>Nhân viên</h3>
+                        </div>
+                        <ul class="pain-list">
+                            <li><i class="fas fa-times-circle"></i>Không theo dõi được lịch sử chấm công</li>
+                            <li><i class="fas fa-times-circle"></i>Không xem được doanh thu các ca trước</li>
+                            <li><i class="fas fa-times-circle"></i>Quy trình báo cáo thủ công, mất thời gian</li>
+                            <li><i class="fas fa-times-circle"></i>Khó theo dõi yêu cầu nguyên vật liệu</li>
+                        </ul>
+                    </div>
+                    <div class="pain-column">
+                        <div class="pain-header alt">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>Quản lý</h3>
+                        </div>
+                        <ul class="pain-list">
+                            <li><i class="fas fa-times-circle"></i>Khó kiểm soát thời gian làm việc</li>
+                            <li><i class="fas fa-times-circle"></i>Khó quản lý doanh thu từng điểm bán</li>
+                            <li><i class="fas fa-times-circle"></i>Tốn thời gian nhập liệu Excel</li>
+                            <li><i class="fas fa-times-circle"></i>Khó kiểm soát cấp phát nguyên vật liệu</li>
+                            <li><i class="fas fa-times-circle"></i>Khó quản lý tồn kho theo thời gian thực</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====================== SECTION 3: GIẢI PHÁP ====================== -->
+            <section data-background-color="#0a2540" class="divider-slide">
+                <div class="divider-content">
+                    <span class="divider-number">03</span>
+                    <h2 class="divider-title">Giải pháp<br><span class="highlight">đề xuất</span></h2>
+                    <p class="divider-sub">Odoo ERP + Mobile App — Một nguồn dữ liệu duy nhất</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2>Giải pháp — <span class="text-primary">Hệ thống quản lý tập trung</span></h2>
+                </div>
+                <div class="solution-hero">
+                    <div class="solution-platforms">
+                        <div class="platform-badge odoo">
+                            <i class="fas fa-server"></i>
+                            <span>Odoo ERP</span>
+                        </div>
+                        <i class="fas fa-plus connector"></i>
+                        <div class="platform-badge mobile">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile App</span>
+                        </div>
+                    </div>
+                    <h3 class="solution-tagline">Một nền tảng — Vận hành toàn bộ chuỗi điểm bán</h3>
+                </div>
+                <div class="objectives">
+                    <h4 class="objectives-title">Mục tiêu cốt lõi</h4>
+                    <div class="objectives-grid">
+                        <div class="objective">
+                            <i class="fas fa-comments-dollar"></i>
+                            <p>Thay thế quản lý qua <strong>group chat</strong></p>
+                        </div>
+                        <div class="objective">
+                            <i class="fas fa-database"></i>
+                            <p>Tập trung dữ liệu trên <strong>một hệ thống duy nhất</strong></p>
+                        </div>
+                        <div class="objective">
+                            <i class="fas fa-cogs"></i>
+                            <p><strong>Tự động hóa</strong> quy trình vận hành</p>
+                        </div>
+                        <div class="objective">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <p>Quản lý theo <strong>thời gian thực</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====================== SECTION 4: CẤU TRÚC HỆ THỐNG ====================== -->
+            <section data-background-color="#0a2540" class="divider-slide">
+                <div class="divider-content">
+                    <span class="divider-number">04</span>
+                    <h2 class="divider-title">Cấu trúc<br><span class="highlight">hệ thống</span></h2>
+                    <p class="divider-sub">3 nhóm người dùng — 1 nền tảng tích hợp</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h2>Tổng quan kiến trúc — <span class="text-primary">3 nhóm người dùng</span></h2>
+                </div>
+                <div class="architecture-grid">
+                    <div class="arch-card admin-odoo">
+                        <div class="arch-icon"><i class="fas fa-crown"></i></div>
+                        <div class="arch-tag">Cấp 1</div>
+                        <h3>Admin Odoo</h3>
+                        <p class="arch-role">Quản trị hệ thống</p>
+                        <ul class="arch-list">
+                            <li>Quản lý toàn bộ chuỗi</li>
+                            <li>Cấu hình sản phẩm, giá</li>
+                            <li>Báo cáo tổng hợp</li>
+                        </ul>
+                    </div>
+                    <div class="arch-card admin-store">
+                        <div class="arch-icon"><i class="fas fa-user-shield"></i></div>
+                        <div class="arch-tag">Cấp 2</div>
+                        <h3>Admin Cửa hàng</h3>
+                        <p class="arch-role">Quản lý vận hành</p>
+                        <ul class="arch-list">
+                            <li>Quản lý cửa hàng phụ trách</li>
+                            <li>Theo dõi vận hành hàng ngày</li>
+                            <li>Xử lý yêu cầu NVL</li>
+                        </ul>
+                    </div>
+                    <div class="arch-card mobile-app">
+                        <div class="arch-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="arch-tag">Cấp 3</div>
+                        <h3>Mobile App</h3>
+                        <p class="arch-role">Nhân viên bán hàng</p>
+                        <ul class="arch-list">
+                            <li>Check-in / Check-out</li>
+                            <li>Báo cáo doanh thu cuối ca</li>
+                            <li>Gửi yêu cầu NVL</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ CHI TIẾT: ADMIN ODOO ============ -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">04.1</span>
+                    <h2><i class="fas fa-crown text-gold"></i> Admin Odoo — <span class="text-primary">Quản trị hệ thống</span></h2>
+                </div>
+                <div class="feature-groups">
+                    <div class="feature-group">
+                        <div class="feature-group-header">
+                            <i class="fas fa-store"></i>
+                            <h4>Quản lý cửa hàng</h4>
+                        </div>
+                        <ul>
+                            <li>Tạo cửa hàng</li>
+                            <li>Quản lý điểm bán</li>
+                        </ul>
+                    </div>
+                    <div class="feature-group">
+                        <div class="feature-group-header">
+                            <i class="fas fa-box"></i>
+                            <h4>Quản lý sản phẩm</h4>
+                        </div>
+                        <ul>
+                            <li>Gán sản phẩm cho cửa hàng</li>
+                            <li>Bảng giá riêng theo cửa hàng</li>
+                        </ul>
+                    </div>
+                    <div class="feature-group">
+                        <div class="feature-group-header">
+                            <i class="fas fa-warehouse"></i>
+                            <h4>Quản lý NVL</h4>
+                        </div>
+                        <ul>
+                            <li>Danh sách nguyên vật liệu</li>
+                            <li>Quản lý tồn kho</li>
+                            <li>Kiểm soát cấp phát NVL</li>
+                        </ul>
+                    </div>
+                    <div class="feature-group">
+                        <div class="feature-group-header">
+                            <i class="fas fa-users-cog"></i>
+                            <h4>Quản lý nhân sự</h4>
+                        </div>
+                        <ul>
+                            <li>Gán nhân viên vào cửa hàng</li>
+                            <li>Gán quản lý cửa hàng</li>
+                        </ul>
+                    </div>
+                    <div class="feature-group feature-group-wide">
+                        <div class="feature-group-header">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Vận hành & Báo cáo</h4>
+                        </div>
+                        <ul class="feature-row">
+                            <li>Theo dõi chấm công</li>
+                            <li>Theo dõi doanh thu</li>
+                            <li>Quản lý yêu cầu NVL</li>
+                            <li>Báo cáo tổng hợp toàn hệ thống</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ CHI TIẾT: ADMIN CỬA HÀNG ============ -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">04.2</span>
+                    <h2><i class="fas fa-user-shield text-blue"></i> Admin Cửa hàng — <span class="text-primary">Vận hành chuỗi</span></h2>
+                </div>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h4>Dashboard tổng quan</h4>
+                        <p>KPI doanh thu, nhân sự, NVL trong 1 màn hình</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Quản lý điểm bán</h4>
+                        <p>Vị trí GPS, QR code, thông tin từng cart</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-friends"></i>
+                        <h4>Quản lý nhân viên</h4>
+                        <p>Phân ca, theo dõi danh sách nhân sự</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-fingerprint"></i>
+                        <h4>Theo dõi chấm công</h4>
+                        <p>Real-time check-in/out qua QR / GPS</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-pie"></i>
+                        <h4>Theo dõi doanh thu</h4>
+                        <p>Số liệu cập nhật ngay sau mỗi ca bán</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-truck-loading"></i>
+                        <h4>Xử lý yêu cầu NVL</h4>
+                        <p>Duyệt, tạo đợt giao, giao nhiều lần</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-boxes"></i>
+                        <h4>Theo dõi tồn kho</h4>
+                        <p>Tồn kho theo từng cửa hàng riêng biệt</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Báo cáo vận hành</h4>
+                        <p>Export Excel/PDF, in QR code điểm bán</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ CHI TIẾT: MOBILE APP ============ -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">04.3</span>
+                    <h2><i class="fas fa-mobile-alt text-green"></i> Mobile App — <span class="text-primary">Dành cho nhân viên</span></h2>
+                </div>
+                <div class="mobile-layout">
+                    <div class="mobile-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <div class="phone-header">
+                                    <i class="fas fa-store"></i>
+                                    <span>Huong Cao Nguyen</span>
+                                </div>
+                                <div class="phone-feature">
+                                    <i class="fas fa-fingerprint"></i>
+                                    <span>Check-in QR / GPS</span>
+                                </div>
+                                <div class="phone-feature">
+                                    <i class="fas fa-receipt"></i>
+                                    <span>Báo cáo cuối ca</span>
+                                </div>
+                                <div class="phone-feature">
+                                    <i class="fas fa-box-open"></i>
+                                    <span>Yêu cầu NVL</span>
+                                </div>
+                                <div class="phone-feature">
+                                    <i class="fas fa-bell"></i>
+                                    <span>Thông báo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-features">
+                        <div class="mobile-feature-group">
+                            <div class="mfg-header">
+                                <i class="fas fa-clock"></i>
+                                <h4>Chấm công</h4>
+                            </div>
+                            <ul>
+                                <li>Check-in / Check-out qua QR Code hoặc GPS</li>
+                                <li>Xem lịch sử chấm công cá nhân</li>
+                            </ul>
+                        </div>
+                        <div class="mobile-feature-group">
+                            <div class="mfg-header">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Báo cáo doanh thu</h4>
+                            </div>
+                            <ul>
+                                <li>Tạo báo cáo cuối ca ngay trên điện thoại</li>
+                                <li>Xem lịch sử doanh thu các ca trước</li>
+                            </ul>
+                        </div>
+                        <div class="mobile-feature-group">
+                            <div class="mfg-header">
+                                <i class="fas fa-box"></i>
+                                <h4>Nguyên vật liệu</h4>
+                            </div>
+                            <ul>
+                                <li>Gửi yêu cầu bổ sung NVL</li>
+                                <li>Theo dõi trạng thái xử lý từng yêu cầu</li>
+                            </ul>
+                        </div>
+                        <div class="mobile-feature-group">
+                            <div class="mfg-header">
+                                <i class="fas fa-bell"></i>
+                                <h4>Thông báo</h4>
+                            </div>
+                            <ul>
+                                <li>Nhận thông báo từ quản lý</li>
+                                <li>Theo dõi trạng thái yêu cầu real-time</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====================== SECTION 5: GIÁ TRỊ ====================== -->
+            <section data-background-color="#064e3b" class="divider-slide">
+                <div class="divider-content">
+                    <span class="divider-number">05</span>
+                    <h2 class="divider-title">Giá trị<br><span class="highlight-green">mang lại</span></h2>
+                    <p class="divider-sub">Lợi ích cho mọi bên — Nhân viên, Quản lý, Doanh nghiệp</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2>Giá trị mang lại — <span class="text-primary">3 góc nhìn</span></h2>
+                </div>
+                <div class="value-columns">
+                    <div class="value-column">
+                        <div class="value-header">
+                            <i class="fas fa-user"></i>
+                            <h3>Nhân viên</h3>
+                        </div>
+                        <ul class="value-list">
+                            <li><i class="fas fa-check-circle"></i>Chấm công dễ dàng qua QR/GPS</li>
+                            <li><i class="fas fa-check-circle"></i>Lịch sử làm việc minh bạch</li>
+                            <li><i class="fas fa-check-circle"></i>Báo cáo nhanh trên điện thoại</li>
+                            <li><i class="fas fa-check-circle"></i>Theo dõi yêu cầu NVL real-time</li>
+                        </ul>
+                    </div>
+                    <div class="value-column">
+                        <div class="value-header">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>Quản lý</h3>
+                        </div>
+                        <ul class="value-list">
+                            <li><i class="fas fa-check-circle"></i>Theo dõi nhân viên real-time</li>
+                            <li><i class="fas fa-check-circle"></i>Kiểm soát doanh thu từng điểm bán</li>
+                            <li><i class="fas fa-check-circle"></i>Giảm 100% nhập liệu thủ công</li>
+                            <li><i class="fas fa-check-circle"></i>Quản lý tồn kho & cấp phát NVL</li>
+                        </ul>
+                    </div>
+                    <div class="value-column value-business">
+                        <div class="value-header gold">
+                            <i class="fas fa-building"></i>
+                            <h3>Doanh nghiệp</h3>
+                        </div>
+                        <ul class="value-list">
+                            <li><i class="fas fa-star"></i>Chuẩn hóa quy trình vận hành</li>
+                            <li><i class="fas fa-star"></i>Tập trung dữ liệu — 1 nguồn duy nhất</li>
+                            <li><i class="fas fa-star"></i>Giảm phụ thuộc group chat</li>
+                            <li><i class="fas fa-star"></i>Dễ dàng mở rộng chuỗi điểm bán</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ BEFORE / AFTER ============ -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2>So sánh <span class="text-primary">Trước vs Sau khi triển khai</span></h2>
+                </div>
+                <div class="comparison">
+                    <div class="comp-column comp-before">
+                        <div class="comp-header">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>Trước</h3>
+                            <span class="comp-tag">Group chat + Excel</span>
+                        </div>
+                        <div class="comp-row"><span class="comp-label">Chấm công</span><span class="comp-value">Không có</span></div>
+                        <div class="comp-row"><span class="comp-label">Báo cáo doanh thu</span><span class="comp-value">Chụp hình gửi chat</span></div>
+                        <div class="comp-row"><span class="comp-label">Yêu cầu NVL</span><span class="comp-value">Tin nhắn lẻ tẻ</span></div>
+                        <div class="comp-row"><span class="comp-label">Tồn kho</span><span class="comp-value">Ghi sổ thủ công</span></div>
+                        <div class="comp-row"><span class="comp-label">Tổng hợp dữ liệu</span><span class="comp-value">Excel — tay</span></div>
+                        <div class="comp-row"><span class="comp-label">Mở rộng quy mô</span><span class="comp-value">Khó khăn</span></div>
+                    </div>
+                    <div class="comp-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="comp-column comp-after">
+                        <div class="comp-header success">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Sau</h3>
+                            <span class="comp-tag">Odoo ERP + Mobile App</span>
+                        </div>
+                        <div class="comp-row"><span class="comp-label">Chấm công</span><span class="comp-value">QR / GPS tự động</span></div>
+                        <div class="comp-row"><span class="comp-label">Báo cáo doanh thu</span><span class="comp-value">Real-time trên App</span></div>
+                        <div class="comp-row"><span class="comp-label">Yêu cầu NVL</span><span class="comp-value">Quy trình chuẩn hóa</span></div>
+                        <div class="comp-row"><span class="comp-label">Tồn kho</span><span class="comp-value">Theo dõi tự động</span></div>
+                        <div class="comp-row"><span class="comp-label">Tổng hợp dữ liệu</span><span class="comp-value">Báo cáo tự động</span></div>
+                        <div class="comp-row"><span class="comp-label">Mở rộng quy mô</span><span class="comp-value">Plug-and-play</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====================== SLIDE FINAL ====================== -->
+            <section class="closing-slide" data-background-color="#0a2540">
+                <div class="closing-content">
+                    <div class="closing-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h2 class="closing-title">Sẵn sàng <span class="highlight">chuyển đổi số</span><br>chuỗi điểm bán</h2>
+                    <p class="closing-sub">Một nền tảng — Mọi vận hành — Mọi thời điểm</p>
+                    <div class="closing-cta">
+                        <div class="cta-item">
+                            <i class="fas fa-check"></i>
+                            <span>Tập trung dữ liệu</span>
+                        </div>
+                        <div class="cta-item">
+                            <i class="fas fa-check"></i>
+                            <span>Tự động hóa quy trình</span>
+                        </div>
+                        <div class="cta-item">
+                            <i class="fas fa-check"></i>
+                            <span>Mở rộng linh hoạt</span>
+                        </div>
+                    </div>
+                    <div class="closing-footer">
+                        <p class="thanks">Cảm ơn quý vị đã lắng nghe</p>
+                        <p class="brand">HUONG CAO NGUYEN ERP — Store Management v18.0</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: false,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            slideNumber: 'c/t',
+            width: 1280,
+            height: 800,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>
