@@ -1051,8 +1051,8 @@ html, body {
 }
 
 .phone-screen {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     background: linear-gradient(180deg, var(--blue-50), white);
     border-radius: 28px;
     padding: 40px 16px 16px;
